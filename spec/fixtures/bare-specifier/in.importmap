@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "three": "/node_modules/three/build/three.module.js",
+    "three/": "/node_modules/three/",
+    "underscore": "data:application/javascript;charset=utf-8,export%20default%20window._%3B",
+    "~/": "//mysite.com/packages/myapp/"
+  }
+}

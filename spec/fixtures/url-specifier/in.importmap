@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "https://unpkg.com/three@0.141.0/build/three.module.js": "/node_modules/three/build/three.module.js",
+    "node-modules:/": "/node_modules/",
+    "data:application/javascript;charset=utf-8,export%20default%20window._%3B": "/underscore/underscore-esm-min.js",
+    "app-home:/": "//mysite.com/packages/myapp/"
+  }
+}

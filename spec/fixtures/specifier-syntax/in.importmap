@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "three": "/node_modules/three/build/three.module.js",
+    "three/": "/node_modules/three/",
+    "~/": "//mysite.com/packages/myapp/"
+  }
+}

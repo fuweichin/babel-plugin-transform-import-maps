@@ -1,0 +1,46 @@
+{
+  "name": "babel-plugin-transform-import-maps",
+  "version": "0.1.0",
+  "description": "A plugin to transform ECMAScript module bare/url import specifiers at build-time",
+  "keywords": [
+    "babel-plugin",
+    "import-maps"
+  ],
+  "author": "Fuwei Chin",
+  "license": "MIT",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "exports": {
+    "import": "./src/index.mjs",
+    "require": "./dist/index.cjs"
+  },
+  "engines": {
+    "node": ">=14.17"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuweichin/babel-plugin-transform-import-maps"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js -w",
+    "build-toc": "ubuntu run gh-md-toc --insert --no-backup --hide-footer --skip-header README.md",
+    "fixtures": "node spec/run-fixtures.mjs",
+    "test": "jasmine"
+  },
+  "dependencies": {
+    "import-maps": "^0.2.4",
+    "schema-utils": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2"
+  },
+  "peerDependencies": {
+    "@babel/core": ">=7.0"
+  }
+}

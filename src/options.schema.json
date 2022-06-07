@@ -1,0 +1,35 @@
+{
+  "title": "importMapsPlugin options",
+  "type": "object",
+  "properties": {
+    "srcPath": {
+      "type": "string",
+      "description": "file path to importmap"
+    },
+    "srcText": {
+      "type": "string",
+      "description": "raw text of importmap"
+    },
+    "srcObject": {
+      "type": "object",
+      "description": "parsed object of importmap"
+    },
+    "baseDir": {
+      "type": "string",
+      "description": "baseDir to calculate scope paths in order to match scopes defined in importmap"
+    },
+    "transformingReport": {
+      "type": "string",
+      "description": "file path to save transforming report"
+    },
+    "exclude": {
+      "anyOf": [
+        {"type": "string"},
+        {"instanceof": "RegExp"},
+        {"instanceof": "Function"}
+      ],
+      "description": "bare/url specifier exclusion function/regexp"
+    }
+  },
+  "additionalProperties": false
+}
