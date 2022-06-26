@@ -51,10 +51,6 @@ function doubleQuote(string) {
 const __dirname$1 = path__default["default"].dirname(url.fileURLToPath((typeof document === 'undefined' ? new (require('u' + 'rl').URL)('file:' + __filename).href : (document.currentScript && document.currentScript.src || new URL('index.cjs', document.baseURI).href))));
 const optionsSchema = JSON.parse(fs__default["default"].readFileSync(path__default["default"].resolve(__dirname$1, '../src/options.schema.json'), {encoding: 'utf-8'}));
 
-let isRelativeSpecifier = (str) => {
-  return str.startsWith('./') || str.startsWith('../') || str.startsWith('/');
-};
-
 function transformImportMapsPlugin({types}, options) {
   schemaUtils.validate(optionsSchema, options, {
     name: 'babel-plugin-transform-import-maps',
@@ -124,7 +120,7 @@ function transformImportMapsPlugin({types}, options) {
   };
   /**
    * resolve bare / url module specifier, and manipulate babylon AST
-   * @param {Babel.Node} sourceNode - module specifier 'StringLiteral' node 
+   * @param {Babel.Node} sourceNode - module specifier 'StringLiteral' node
    * @param {string} importer - file path of current module
    * @param {Babel.NodePath|ArrayLike<Babel.Node>} pathOrArgs - path for import/export statement, args for dynamic import
    */
@@ -133,7 +129,7 @@ function transformImportMapsPlugin({types}, options) {
       return;
     }
     let source = sourceNode.value;
-    if (isRelativeSpecifier(source)) {
+    if (source.startsWith('./' || source.startsWith('../'))) {
       return;
     }
     if (exclude && isExcluded(source)) {

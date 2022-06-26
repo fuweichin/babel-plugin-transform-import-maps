@@ -17,6 +17,19 @@ describe('TransformImportMaps', () => {
     let expectedOutputCode = await readFileAsync(expectedOutputFile, {encoding: 'utf-8'});
     expect(output.code).toEqual(expectedOutputCode.replace(/\n\n+/g, () => '\n').trimEnd());
   });
+  it('pathname-specifier', async () => {
+    let {inputFile, importmapFile, expectedOutputFile, pluginOptions} = (await import('./fixtures/pathname-specifier.js')).default;
+    let output = await babel.transformFileAsync(inputFile, {
+      plugins: [
+        [transformImportMapsPlugin, {
+          srcText: await readFileAsync(importmapFile, {encoding: 'utf-8'}),
+          ...pluginOptions,
+        }]
+      ],
+    });
+    let expectedOutputCode = await readFileAsync(expectedOutputFile, {encoding: 'utf-8'});
+    expect(output.code).toEqual(expectedOutputCode.replace(/\n\n+/g, () => '\n').trimEnd());
+  });
   it('specifier-excluding', async () => {
     let {inputFile, importmapFile, expectedOutputFile, pluginOptions} = (await import('./fixtures/specifier-excluding.js')).default;
     let output = await babel.transformFileAsync(inputFile, {

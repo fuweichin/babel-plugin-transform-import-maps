@@ -10,10 +10,6 @@ import {fileURLToPath} from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const optionsSchema = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../src/options.schema.json'), {encoding: 'utf-8'}));
 
-let isRelativeSpecifier = (str) => {
-  return str.startsWith('./') || str.startsWith('../') || str.startsWith('/');
-};
-
 export default function transformImportMapsPlugin({types}, options) {
   validate(optionsSchema, options, {
     name: 'babel-plugin-transform-import-maps',
@@ -83,7 +79,7 @@ export default function transformImportMapsPlugin({types}, options) {
   };
   /**
    * resolve bare / url module specifier, and manipulate babylon AST
-   * @param {Babel.Node} sourceNode - module specifier 'StringLiteral' node 
+   * @param {Babel.Node} sourceNode - module specifier 'StringLiteral' node
    * @param {string} importer - file path of current module
    * @param {Babel.NodePath|ArrayLike<Babel.Node>} pathOrArgs - path for import/export statement, args for dynamic import
    */
@@ -92,7 +88,7 @@ export default function transformImportMapsPlugin({types}, options) {
       return;
     }
     let source = sourceNode.value;
-    if (isRelativeSpecifier(source)) {
+    if (source.startsWith('./' || source.startsWith('../'))) {
       return;
     }
     if (exclude && isExcluded(source)) {

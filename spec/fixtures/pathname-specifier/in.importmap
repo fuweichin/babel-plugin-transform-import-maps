@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "/js/app.mjs": "/js/app-8e0d62a03.mjs",
+    "/js/dep.mjs": "/js/dep-16f9d819a.mjs",
+    "/js/sub-dep.mjs": "/js/sub-dep-7be2aa47f.mjs",
+    "//example.com/js/sub-dep.mjs": "/js/sub-dep-5f47101dc.mjs"
+  }
+}
